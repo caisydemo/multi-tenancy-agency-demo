@@ -1,5 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { initSdk, WebhookPayload, WebhookPayloadTrigger } from "@caisy/sdk";
+import {
+  initSdk,
+  ProjectWebhookPayload,
+  ProjectWebhookPayloadTrigger,
+} from "@caisy/sdk";
 
 const getEnvVar = (key: string) => {
   const value = process.env[key];
@@ -37,13 +41,13 @@ export default async function handler(
     }
 
     // check type of trigger from caisy
-    const payload = req.body as WebhookPayload;
+    const payload = req.body as ProjectWebhookPayload;
 
     if (
       [
-        WebhookPayloadTrigger.BLUEPRINT_CREATE,
-        WebhookPayloadTrigger.BLUEPRINT_UPDATE,
-        WebhookPayloadTrigger.BLUEPRINT_DELETE,
+        ProjectWebhookPayloadTrigger.BLUEPRINT_CREATE,
+        ProjectWebhookPayloadTrigger.BLUEPRINT_UPDATE,
+        ProjectWebhookPayloadTrigger.BLUEPRINT_DELETE,
       ].includes(payload.webhook.trigger)
     ) {
       // we get all the projects for our tanants
