@@ -103,6 +103,8 @@ export type IGenAuthor = {
 
 
 export type IGenAuthorAvatarArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -160,21 +162,29 @@ export type IGenBlogArticle = {
 
 
 export type IGenBlogArticleAuthorArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IGenBlogArticleCategoryArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IGenBlogArticleSeoArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IGenBlogArticleTeaserImageArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -195,6 +205,8 @@ export type IGenBlogArticleGrid = {
 
 
 export type IGenBlogArticleGridArticlesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -300,6 +312,13 @@ export type IGenBlogArticle_Text = {
   __typename?: 'BlogArticle_text';
   connections?: Maybe<Array<Maybe<IGenBlogArticle_Text_Connections>>>;
   json?: Maybe<Scalars['JSON']>;
+};
+
+
+export type IGenBlogArticle_TextConnectionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type IGenBlogArticle_Text_Connections = IGenAsset;
@@ -419,6 +438,124 @@ export type IGenContactForm_Where = {
   titleInternal?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
+export type IGenFaq = {
+  __typename?: 'Faq';
+  _meta?: Maybe<IGenCaisyDocument_Meta>;
+  headline?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  sections?: Maybe<Array<Maybe<IGenFaq_Sections>>>;
+  subheadline?: Maybe<Scalars['String']>;
+};
+
+
+export type IGenFaqSectionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type IGenFaqSection = {
+  __typename?: 'FaqSection';
+  _meta?: Maybe<IGenCaisyDocument_Meta>;
+  description?: Maybe<IGenFaqSection_Description>;
+  id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+export type IGenFaqSectionDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type IGenFaqSection_Connection = {
+  __typename?: 'FaqSection_Connection';
+  edges?: Maybe<Array<Maybe<IGenFaqSection_ConnectionEdge>>>;
+  pageInfo?: Maybe<IGenPageInfo>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type IGenFaqSection_ConnectionEdge = {
+  __typename?: 'FaqSection_ConnectionEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<IGenFaqSection>;
+};
+
+export type IGenFaqSection_CreateInput = {
+  description?: InputMaybe<Scalars['JSON']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type IGenFaqSection_Sort = {
+  title?: InputMaybe<IGenOrder>;
+};
+
+export type IGenFaqSection_UpdateInput = {
+  description?: InputMaybe<Scalars['JSON']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type IGenFaqSection_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenFaqSection_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenFaqSection_Where>>>;
+  description?: InputMaybe<IGenCaisyField_Richtext_Where>;
+  title?: InputMaybe<IGenCaisyField_String_Where>;
+};
+
+export type IGenFaqSection_Description = {
+  __typename?: 'FaqSection_description';
+  connections?: Maybe<Array<Maybe<IGenFaqSection_Description_Connections>>>;
+  json?: Maybe<Scalars['JSON']>;
+};
+
+
+export type IGenFaqSection_DescriptionConnectionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type IGenFaqSection_Description_Connections = IGenCaisy_Field_Document_NotFound;
+
+export type IGenFaq_Connection = {
+  __typename?: 'Faq_Connection';
+  edges?: Maybe<Array<Maybe<IGenFaq_ConnectionEdge>>>;
+  pageInfo?: Maybe<IGenPageInfo>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type IGenFaq_ConnectionEdge = {
+  __typename?: 'Faq_ConnectionEdge';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<IGenFaq>;
+};
+
+export type IGenFaq_CreateInput = {
+  headline?: InputMaybe<Scalars['String']>;
+  sections?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  subheadline?: InputMaybe<Scalars['String']>;
+};
+
+export type IGenFaq_Sort = {
+  headline?: InputMaybe<IGenOrder>;
+  sections?: InputMaybe<IGenOrder>;
+  subheadline?: InputMaybe<IGenOrder>;
+};
+
+export type IGenFaq_UpdateInput = {
+  headline?: InputMaybe<Scalars['String']>;
+  sections?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  subheadline?: InputMaybe<Scalars['String']>;
+};
+
+export type IGenFaq_Where = {
+  AND?: InputMaybe<Array<InputMaybe<IGenFaq_Where>>>;
+  OR?: InputMaybe<Array<InputMaybe<IGenFaq_Where>>>;
+  headline?: InputMaybe<IGenCaisyField_String_Where>;
+  subheadline?: InputMaybe<IGenCaisyField_String_Where>;
+};
+
+export type IGenFaq_Sections = IGenFaqSection;
+
 export type IGenFooter = {
   __typename?: 'Footer';
   _meta?: Maybe<IGenCaisyDocument_Meta>;
@@ -446,6 +583,13 @@ export type IGenFooter_Content = {
   __typename?: 'Footer_content';
   connections?: Maybe<Array<Maybe<IGenFooter_Content_Connections>>>;
   json?: Maybe<Scalars['JSON']>;
+};
+
+
+export type IGenFooter_ContentConnectionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 export type IGenFooter_Content_Connections = IGenCaisy_Field_Document_NotFound;
@@ -503,6 +647,13 @@ export type IGenFulltext_Text = {
   json?: Maybe<Scalars['JSON']>;
 };
 
+
+export type IGenFulltext_TextConnectionsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
 export type IGenFulltext_Text_Connections = IGenAsset;
 
 export type IGenFullwidthBlogTeaser = {
@@ -515,6 +666,8 @@ export type IGenFullwidthBlogTeaser = {
 
 
 export type IGenFullwidthBlogTeaserFeaturedArticleArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -608,6 +761,8 @@ export type IGenMutation = {
   createBlogArticleGrid?: Maybe<IGenBlogArticleGrid>;
   createCategory?: Maybe<IGenCategory>;
   createContactForm?: Maybe<IGenContactForm>;
+  createFaq?: Maybe<IGenFaq>;
+  createFaqSection?: Maybe<IGenFaqSection>;
   createFooter?: Maybe<IGenFooter>;
   createFulltext?: Maybe<IGenFulltext>;
   createFullwidthBlogTeaser?: Maybe<IGenFullwidthBlogTeaser>;
@@ -623,6 +778,8 @@ export type IGenMutation = {
   deleteBlogArticleGrid?: Maybe<Scalars['Boolean']>;
   deleteCategory?: Maybe<Scalars['Boolean']>;
   deleteContactForm?: Maybe<Scalars['Boolean']>;
+  deleteFaq?: Maybe<Scalars['Boolean']>;
+  deleteFaqSection?: Maybe<Scalars['Boolean']>;
   deleteFooter?: Maybe<Scalars['Boolean']>;
   deleteFulltext?: Maybe<Scalars['Boolean']>;
   deleteFullwidthBlogTeaser?: Maybe<Scalars['Boolean']>;
@@ -638,6 +795,8 @@ export type IGenMutation = {
   updateBlogArticleGrid?: Maybe<IGenBlogArticleGrid>;
   updateCategory?: Maybe<IGenCategory>;
   updateContactForm?: Maybe<IGenContactForm>;
+  updateFaq?: Maybe<IGenFaq>;
+  updateFaqSection?: Maybe<IGenFaqSection>;
   updateFooter?: Maybe<IGenFooter>;
   updateFulltext?: Maybe<IGenFulltext>;
   updateFullwidthBlogTeaser?: Maybe<IGenFullwidthBlogTeaser>;
@@ -682,6 +841,18 @@ export type IGenMutationCreateCategoryArgs = {
 
 export type IGenMutationCreateContactFormArgs = {
   input: IGenContactForm_CreateInput;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IGenMutationCreateFaqArgs = {
+  input: IGenFaq_CreateInput;
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IGenMutationCreateFaqSectionArgs = {
+  input: IGenFaqSection_CreateInput;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -766,6 +937,16 @@ export type IGenMutationDeleteCategoryArgs = {
 
 
 export type IGenMutationDeleteContactFormArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type IGenMutationDeleteFaqArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type IGenMutationDeleteFaqSectionArgs = {
   id: Scalars['ID'];
 };
 
@@ -863,6 +1044,22 @@ export type IGenMutationUpdateContactFormArgs = {
 };
 
 
+export type IGenMutationUpdateFaqArgs = {
+  id: Scalars['ID'];
+  input: IGenFaq_UpdateInput;
+  locale?: InputMaybe<Scalars['String']>;
+  merge?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type IGenMutationUpdateFaqSectionArgs = {
+  id: Scalars['ID'];
+  input: IGenFaqSection_UpdateInput;
+  locale?: InputMaybe<Scalars['String']>;
+  merge?: InputMaybe<Scalars['Boolean']>;
+};
+
+
 export type IGenMutationUpdateFooterArgs = {
   id: Scalars['ID'];
   input: IGenFooter_UpdateInput;
@@ -946,16 +1143,22 @@ export type IGenNavigation = {
 
 
 export type IGenNavigationEntriesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IGenNavigationHomePageArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IGenNavigationNotFoundPageArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -969,6 +1172,8 @@ export type IGenNavigationEntry = {
 
 
 export type IGenNavigationEntryConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1087,11 +1292,15 @@ export type IGenPage = {
 
 
 export type IGenPageComponentsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IGenPageSeoArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1144,7 +1353,7 @@ export type IGenPage_Where = {
   titleInternal?: InputMaybe<IGenCaisyField_String_Where>;
 };
 
-export type IGenPage_Components = IGenBlogArticleGrid | IGenContactForm | IGenFulltext | IGenFullwidthBlogTeaser | IGenHeadline | IGenNewsletterSignup;
+export type IGenPage_Components = IGenBlogArticleGrid | IGenContactForm | IGenFaq | IGenFulltext | IGenFullwidthBlogTeaser | IGenHeadline | IGenNewsletterSignup;
 
 export type IGenQuery = {
   __typename?: 'Query';
@@ -1154,6 +1363,8 @@ export type IGenQuery = {
   BlogArticleGrid?: Maybe<IGenBlogArticleGrid>;
   Category?: Maybe<IGenCategory>;
   ContactForm?: Maybe<IGenContactForm>;
+  Faq?: Maybe<IGenFaq>;
+  FaqSection?: Maybe<IGenFaqSection>;
   Footer?: Maybe<IGenFooter>;
   Fulltext?: Maybe<IGenFulltext>;
   FullwidthBlogTeaser?: Maybe<IGenFullwidthBlogTeaser>;
@@ -1169,6 +1380,8 @@ export type IGenQuery = {
   allBlogArticleGrid?: Maybe<IGenBlogArticleGrid_Connection>;
   allCategory?: Maybe<IGenCategory_Connection>;
   allContactForm?: Maybe<IGenContactForm_Connection>;
+  allFaq?: Maybe<IGenFaq_Connection>;
+  allFaqSection?: Maybe<IGenFaqSection_Connection>;
   allFulltext?: Maybe<IGenFulltext_Connection>;
   allFullwidthBlogTeaser?: Maybe<IGenFullwidthBlogTeaser_Connection>;
   allHeadline?: Maybe<IGenHeadline_Connection>;
@@ -1210,6 +1423,18 @@ export type IGenQueryCategoryArgs = {
 
 
 export type IGenQueryContactFormArgs = {
+  id: Scalars['ID'];
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IGenQueryFaqArgs = {
+  id: Scalars['ID'];
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IGenQueryFaqSectionArgs = {
   id: Scalars['ID'];
   locale?: InputMaybe<Scalars['String']>;
 };
@@ -1333,6 +1558,28 @@ export type IGenQueryAllContactFormArgs = {
 };
 
 
+export type IGenQueryAllFaqArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<IGenFaq_Sort>>>;
+  where?: InputMaybe<Array<InputMaybe<IGenFaq_Where>>>;
+};
+
+
+export type IGenQueryAllFaqSectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Array<InputMaybe<IGenFaqSection_Sort>>>;
+  where?: InputMaybe<Array<InputMaybe<IGenFaqSection_Where>>>;
+};
+
+
 export type IGenQueryAllFulltextArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -1422,6 +1669,8 @@ export type IGenSeoInformation = {
 
 
 export type IGenSeoInformationOgImageArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1501,6 +1750,8 @@ export type IGenCategoryFragment = { __typename?: 'Category', name?: string | nu
 
 export type IGenContactFormFragment = { __typename?: 'ContactForm', id?: string | null, headline?: string | null };
 
+export type IGenFaqFragment = { __typename?: 'Faq', headline?: string | null, subheadline?: string | null, id?: string | null, sections?: Array<{ __typename?: 'FaqSection', id?: string | null, title?: string | null, description?: { __typename?: 'FaqSection_description', json?: any | null } | null } | null> | null };
+
 export type IGenFulltextFragment = { __typename?: 'Fulltext', id?: string | null, text?: { __typename?: 'Fulltext_text', json?: any | null, connections?: Array<(
       { __typename: 'Asset' }
       & IGenAssetFragment
@@ -1532,6 +1783,9 @@ export type IGenPageFragment = { __typename?: 'Page', id?: string | null, slug?:
   ) | (
     { __typename: 'ContactForm' }
     & IGenContactFormFragment
+  ) | (
+    { __typename: 'Faq' }
+    & IGenFaqFragment
   ) | (
     { __typename: 'Fulltext' }
     & IGenFulltextFragment
@@ -1746,6 +2000,22 @@ export const FulltextFragmentDoc = gql`
   id
 }
     `;
+export const FaqFragmentDoc = gql`
+    fragment Faq on Faq {
+  headline
+  subheadline
+  sections {
+    ... on FaqSection {
+      id
+      title
+      description {
+        json
+      }
+    }
+  }
+  id
+}
+    `;
 export const PageFragmentDoc = gql`
     fragment Page on Page {
   components {
@@ -1756,6 +2026,7 @@ export const PageFragmentDoc = gql`
     ...FullwidthBlogTeaser
     ...Headline
     ...Fulltext
+    ...Faq
   }
   id
   seo {
@@ -1849,7 +2120,8 @@ ${FullwidthBlogTeaserFragmentDoc}
 ${AuthorFragmentDoc}
 ${CategoryFragmentDoc}
 ${HeadlineFragmentDoc}
-${FulltextFragmentDoc}`;
+${FulltextFragmentDoc}
+${FaqFragmentDoc}`;
 export const AllPageMetaDocument = gql`
     query allPageMeta($after: String) {
   allPage(after: $after) {

@@ -181,7 +181,18 @@ type Author {
   _meta: CaisyDocument_Meta
 
   """"""
-  avatar(locale: String): Asset
+  avatar(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Asset
 
   """"""
   id: ID
@@ -271,16 +282,49 @@ type BlogArticle {
   _meta: CaisyDocument_Meta
 
   """"""
-  author(locale: String): Author
+  author(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Author
 
   """"""
-  category(locale: String): Category
+  category(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Category
 
   """"""
   id: ID
 
   """"""
-  seo(locale: String): SeoInformation
+  seo(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): SeoInformation
 
   """"""
   slug: String
@@ -292,7 +336,18 @@ type BlogArticle {
   teaserHeadline: String
 
   """"""
-  teaserImage(locale: String): Asset
+  teaserImage(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Asset
 
   """"""
   text(locale: String): BlogArticle_text
@@ -304,7 +359,18 @@ type BlogArticleGrid {
   _meta: CaisyDocument_Meta
 
   """"""
-  articles(locale: String): [BlogArticleGrid_articles]
+  articles(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [BlogArticleGrid_articles]
 
   """"""
   headline: String
@@ -529,7 +595,18 @@ input BlogArticle_Where {
 """"""
 type BlogArticle_text {
   """"""
-  connections: [BlogArticle_text_Connections]
+  connections(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [BlogArticle_text_Connections]
 
   """"""
   json: JSON
@@ -751,6 +828,208 @@ The `DateTime` scalar type represents a DateTime. The DateTime is serialized as 
 scalar DateTime
 
 """"""
+type Faq {
+  """"""
+  _meta: CaisyDocument_Meta
+
+  """"""
+  headline: String
+
+  """"""
+  id: ID
+
+  """"""
+  sections(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [Faq_sections]
+
+  """"""
+  subheadline: String
+}
+
+""""""
+type FaqSection {
+  """"""
+  _meta: CaisyDocument_Meta
+
+  """"""
+  description(locale: String): FaqSection_description
+
+  """"""
+  id: ID
+
+  """"""
+  title: String
+}
+
+""""""
+type FaqSection_Connection {
+  """"""
+  edges: [FaqSection_ConnectionEdge]
+
+  """"""
+  pageInfo: PageInfo
+
+  """"""
+  totalCount: Int
+}
+
+""""""
+type FaqSection_ConnectionEdge {
+  """"""
+  cursor: String
+
+  """"""
+  node: FaqSection
+}
+
+""""""
+input FaqSection_CreateInput {
+  """"""
+  description: JSON
+
+  """"""
+  title: String
+}
+
+""""""
+input FaqSection_Sort {
+  """"""
+  title: Order
+}
+
+""""""
+input FaqSection_UpdateInput {
+  """"""
+  description: JSON
+
+  """"""
+  title: String
+}
+
+""""""
+input FaqSection_Where {
+  """"""
+  AND: [FaqSection_Where]
+
+  """"""
+  OR: [FaqSection_Where]
+
+  """"""
+  description: CaisyField_Richtext_Where
+
+  """"""
+  title: CaisyField_String_Where
+}
+
+""""""
+type FaqSection_description {
+  """"""
+  connections(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [FaqSection_description_Connections]
+
+  """"""
+  json: JSON
+}
+
+""""""
+union FaqSection_description_Connections = Caisy_Field_Document_NotFound
+
+""""""
+type Faq_Connection {
+  """"""
+  edges: [Faq_ConnectionEdge]
+
+  """"""
+  pageInfo: PageInfo
+
+  """"""
+  totalCount: Int
+}
+
+""""""
+type Faq_ConnectionEdge {
+  """"""
+  cursor: String
+
+  """"""
+  node: Faq
+}
+
+""""""
+input Faq_CreateInput {
+  """"""
+  headline: String
+
+  """"""
+  sections: [ID]
+
+  """"""
+  subheadline: String
+}
+
+""""""
+input Faq_Sort {
+  """"""
+  headline: Order
+
+  """"""
+  sections: Order
+
+  """"""
+  subheadline: Order
+}
+
+""""""
+input Faq_UpdateInput {
+  """"""
+  headline: String
+
+  """"""
+  sections: [ID]
+
+  """"""
+  subheadline: String
+}
+
+""""""
+input Faq_Where {
+  """"""
+  AND: [Faq_Where]
+
+  """"""
+  OR: [Faq_Where]
+
+  """"""
+  headline: CaisyField_String_Where
+
+  """"""
+  subheadline: CaisyField_String_Where
+}
+
+""""""
+union Faq_sections = FaqSection
+
+""""""
 type Footer {
   """"""
   _meta: CaisyDocument_Meta
@@ -786,7 +1065,18 @@ input Footer_UpdateInput {
 """"""
 type Footer_content {
   """"""
-  connections: [Footer_content_Connections]
+  connections(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [Footer_content_Connections]
 
   """"""
   json: JSON
@@ -873,7 +1163,18 @@ input Fulltext_Where {
 """"""
 type Fulltext_text {
   """"""
-  connections: [Fulltext_text_Connections]
+  connections(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [Fulltext_text_Connections]
 
   """"""
   json: JSON
@@ -888,7 +1189,18 @@ type FullwidthBlogTeaser {
   _meta: CaisyDocument_Meta
 
   """"""
-  featuredArticle(locale: String): BlogArticle
+  featuredArticle(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): BlogArticle
 
   """"""
   id: ID
@@ -1074,6 +1386,12 @@ type Mutation {
   createContactForm(input: ContactForm_CreateInput!, locale: String): ContactForm
 
   """"""
+  createFaq(input: Faq_CreateInput!, locale: String): Faq
+
+  """"""
+  createFaqSection(input: FaqSection_CreateInput!, locale: String): FaqSection
+
+  """"""
   createFooter(input: Footer_CreateInput!, locale: String): Footer
 
   """"""
@@ -1132,6 +1450,18 @@ type Mutation {
 
   """"""
   deleteContactForm(
+    """DocumentID"""
+    id: ID!
+  ): Boolean
+
+  """"""
+  deleteFaq(
+    """DocumentID"""
+    id: ID!
+  ): Boolean
+
+  """"""
+  deleteFaqSection(
     """DocumentID"""
     id: ID!
   ): Boolean
@@ -1281,6 +1611,36 @@ type Mutation {
   ): ContactForm
 
   """"""
+  updateFaq(
+    """documentID"""
+    id: ID!
+
+    """"""
+    input: Faq_UpdateInput!
+
+    """"""
+    locale: String
+
+    """Merge updated input (instead of replacing)"""
+    merge: Boolean = true
+  ): Faq
+
+  """"""
+  updateFaqSection(
+    """documentID"""
+    id: ID!
+
+    """"""
+    input: FaqSection_UpdateInput!
+
+    """"""
+    locale: String
+
+    """Merge updated input (instead of replacing)"""
+    merge: Boolean = true
+  ): FaqSection
+
+  """"""
   updateFooter(
     """documentID"""
     id: ID!
@@ -1422,16 +1782,49 @@ type Navigation {
   _meta: CaisyDocument_Meta
 
   """"""
-  entries(locale: String): [Navigation_entries]
+  entries(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [Navigation_entries]
 
   """"""
-  homePage(locale: String): Page
+  homePage(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Page
 
   """"""
   id: ID
 
   """"""
-  notFoundPage(locale: String): Page
+  notFoundPage(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Page
 
   """"""
   titleInternal: String
@@ -1443,7 +1836,18 @@ type NavigationEntry {
   _meta: CaisyDocument_Meta
 
   """"""
-  connection(locale: String): Page
+  connection(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Page
 
   """"""
   id: ID
@@ -1653,13 +2057,35 @@ type Page {
   _meta: CaisyDocument_Meta
 
   """"""
-  components(locale: String): [Page_components]
+  components(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): [Page_components]
 
   """"""
   id: ID
 
   """"""
-  seo(locale: String): SeoInformation
+  seo(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): SeoInformation
 
   """"""
   slug: String
@@ -1765,7 +2191,7 @@ input Page_Where {
 }
 
 """"""
-union Page_components = BlogArticleGrid | ContactForm | Fulltext | FullwidthBlogTeaser | Headline | NewsletterSignup
+union Page_components = BlogArticleGrid | ContactForm | Faq | Fulltext | FullwidthBlogTeaser | Headline | NewsletterSignup
 
 """"""
 type Query {
@@ -1786,6 +2212,12 @@ type Query {
 
   """"""
   ContactForm(id: ID!, locale: String): ContactForm
+
+  """"""
+  Faq(id: ID!, locale: String): Faq
+
+  """"""
+  FaqSection(id: ID!, locale: String): FaqSection
 
   """"""
   Footer(locale: String): Footer
@@ -1833,6 +2265,12 @@ type Query {
   allContactForm(after: String, before: String, first: Int, last: Int, locale: String, sort: [ContactForm_Sort], where: [ContactForm_Where]): ContactForm_Connection
 
   """"""
+  allFaq(after: String, before: String, first: Int, last: Int, locale: String, sort: [Faq_Sort], where: [Faq_Where]): Faq_Connection
+
+  """"""
+  allFaqSection(after: String, before: String, first: Int, last: Int, locale: String, sort: [FaqSection_Sort], where: [FaqSection_Where]): FaqSection_Connection
+
+  """"""
   allFulltext(after: String, before: String, first: Int, last: Int, locale: String, sort: [Fulltext_Sort], where: [Fulltext_Where]): Fulltext_Connection
 
   """"""
@@ -1869,7 +2307,18 @@ type SeoInformation {
   keywords: String
 
   """"""
-  ogImage(locale: String): Asset
+  ogImage(
+    """
+    The cursor to start the pagination from. In this case the curser equals the id for the (last) element. If not set, we wil start from the beginning.
+    """
+    after: String
+
+    """The number of items to return. Default and max value is 100."""
+    first: Int = 100
+
+    """"""
+    locale: String
+  ): Asset
 
   """"""
   title: String

@@ -6,6 +6,7 @@ import { FullwidthBlogTeaser } from "../components/FullwidthBlogTeaser";
 import { Headline } from "../components/Headline";
 import { NewsletterSignup } from "../components/NewsletterSignup";
 import { IGenPage_Components } from "../services/graphql/__generated/sdk";
+import { Faq } from "../components/Faq";
 
 interface IComponentSelector {
   component: IGenPage_Components;
@@ -18,6 +19,7 @@ export const ComponentSelector: React.FC<IComponentSelector> = ({
     <>
       {component.__typename == "Headline" && <Headline {...component} />}
       {component.__typename == "Fulltext" && <FullText {...component} />}
+      {component.__typename == "Faq" && <Faq {...component} />}
       {component.__typename == "BlogArticleGrid" && (
         <BlogArticleGrid {...component} />
       )}

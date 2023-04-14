@@ -5,6 +5,7 @@ import { f_Fulltext } from "./Fulltext";
 import { f_FullwidthBlogTeaser } from "./FullwidthBlogTeaser";
 import { f_Headline } from "./Headline";
 import { f_NewsletterSignup } from "./NewsletterSignup";
+import { f_Faq } from "./Faq";
 
 export const f_Page = gql`
   ${f_ContactForm}
@@ -13,6 +14,7 @@ export const f_Page = gql`
   ${f_FullwidthBlogTeaser}
   ${f_Headline}
   ${f_Fulltext}
+  ${f_Faq}
 
   fragment Page on Page {
     components {
@@ -23,6 +25,7 @@ export const f_Page = gql`
       ...FullwidthBlogTeaser
       ...Headline
       ...Fulltext
+      ...Faq
     }
     id
     seo {
